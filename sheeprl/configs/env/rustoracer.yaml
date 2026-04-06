@@ -1,0 +1,16 @@
+defaults:
+  - default
+  - _self_
+
+# Override from `default` config
+id: rustoracer
+action_repeat: 1
+capture_video: False
+reward_as_observation: False
+
+# Wrapper to be instantiated
+wrapper:
+  _target_: sheeprl.envs.rustoracer.RustoracerWrapper
+  id: ${env.id}
+  yaml_path: "G:/Biggie repos/rustoracer/maps/berlin.yaml"
+  seed: ${seed}
