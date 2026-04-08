@@ -10,7 +10,7 @@ from gymnasium import spaces
 class RustoracerWrapper(gym.Env):
     def __init__(self, id: str, yaml_path: str, seed: Optional[int] = None) -> None:
         from rustoracerpy import RustoracerEnv
-        env = RustoracerEnv(yaml = yaml_path, render_mode = "human")
+        env = RustoracerEnv(yaml = yaml_path, render_mode = "rgb_array")
         self._env = env
         self.observation_space = spaces.Dict(
             {
@@ -27,7 +27,7 @@ class RustoracerWrapper(gym.Env):
         self.reward_range = (-np.inf, np.inf)
         self.observation_space.seed(seed)
         self.action_space.seed(seed)
-        self._render_mode = "human"
+        self._render_mode = "rgb_array"
         self._metadata = {"render_fps": 60}
 
     @property
